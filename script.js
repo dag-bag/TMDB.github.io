@@ -22,22 +22,41 @@ async function GetMovies(url) {
   //   img.src = IMGPATH + movie.poster_path;
   //   document.body.appendChild(img);
   // });
+
   console.log(respdata.results);
   respdata.results.forEach((singelMovieData) => {
     const { poster_path, title, vote_average, backdrop_path, overview } =
       singelMovieData;
+    // Set img to localstorage for quick start website
+    let fullimgPath = IMGPATH + poster_path;
+    let fullbackdropPath = IMGPATH + backdrop_path;
+    let imgSet = false;
+    function setImgToLs() {
+      return localStorage.setItem("recentImages", fullimgPath);
+      imgSet = true;
+    }
+    function getimgTols() {
+      let recentImages = localStorage.getItem("recentImages");
+      console.log("recentImages:", recentImages);
+
+      return recentImages;
+    }
+    if (!imgSet) {
+      setImgToLs();
+    }
+    getimgTols();
     const movieEL = document.createElement("div");
     movieEL.classList.add("movieBox");
 
     movieEL.innerHTML = `
         
-            <img src="${IMGPATH + poster_path}" alt="${title}">
+            <img src="${getimgTols()}" alt="${title}">
             <div class="movieInfo">
             <h3>${title}</h3>
             <span class="${getClassByRate(vote_average)}">${vote_average}</span>
                 </div>
                 <div class="overview">
-                <img src="${IMGPATH + backdrop_path}" alt="${title}">
+                <img src="${fullbackdropPath}" alt="${title}">
                 ${overview}</div>
                 
          
@@ -129,4 +148,11 @@ prev.addEventListener("click", (e) => {
   currenPage--;
   const prevPageNumber = APIPAGE + currenPage;
   GetMovies(prevPageNumber);
+});
+//  test a API for test
+
+const home = document.querySelector(".home");
+home.addEventListener("click", () => {
+  main.innerHTML = "";
+  GetMovies(APIURL);
 });

@@ -48,9 +48,9 @@ body header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background: #373b69;
   color: #ebe5e2;
   height: 5rem;
@@ -75,6 +75,13 @@ body header .searchBox #searchIcon {
   right: 3rem;
   cursor: pointer;
   font-size: 1.5rem;
+}
+
+body header nav ul li {
+  cursor: pointer;
+  margin-left: 2rem;
+  font-size: 2rem;
+  font-weight: 900;
 }
 
 body main .movies {
@@ -229,5 +236,10 @@ body .pageNotFound {
 body .pageNotFound h4 {
   color: #ebe5e2;
   font-size: 3rem;
+}
+
+iframe {
+  width: 30rem;
+  height: 30rem;
 }
 /*# sourceMappingURL=main.css.map */
