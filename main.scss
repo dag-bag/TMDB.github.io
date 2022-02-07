@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600;700&family=Poppins:wght@200;400;600;700;800;900&family=Sora:wght@300;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+
+  border-radius: 0.7rem;
+  font-family: "Poppins", sans-serif;
+}
+html {
+  font-size: 62.5%;
+}
+
+::selection {
+  color: crimson;
+}
+@mixin fontFmaily {
+  //   font-family: 'Epilogue', sans-serif;
+  // font-family: 'Sora', sans-serif;
+}
+@mixin backgroundColor() {
+  // background: #272532;
+  background: #22254b;
+}
+@mixin movieBoxColor() {
+  background: #373b69;
+  color: #ebe5e2;
+}
+// Display FLex Property
+@mixin Flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  #button {
+    position: absolute;
+    // top: 50%;
+    left: 0;
+  }
+  header {
+    @include Flex();
+    justify-content: flex-end;
+    @include movieBoxColor();
+    height: 5rem;
+    .searchBox {
+      position: relative;
+      input {
+        border: 0.1rem solid #272532;
+        border-radius: 1.2rem;
+        color: #ebe5e2;
+        padding: 0.4rem 0.4rem;
+        margin-right: 2rem;
+        @include backgroundColor();
+      }
+      #searchIcon {
+        position: absolute;
+        top: 0.6rem;
+        right: 3rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  @include backgroundColor();
+  width: 100%;
+  height: 100vh;
+  main .movies {
+    padding: 1rem;
+    @include Flex();
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .movieBox {
+      position: relative;
+      @include movieBoxColor();
+      flex: 1 1 20rem;
+      // width: 20rem;
+      // height: 30rem;
+      // height: 40rem;
+      overflow: hidden;
+      max-width: 40rem;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+        rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+      img {
+        width: 100%;
+        // height: 100%;
+        object-fit: cover;
+      }
+      .overview {
+        position: absolute;
+
+        bottom: 0;
+        left: 0;
+        right: 0;
+        // background: #fff;
+        background: #fff;
+        color: #272532;
+        padding: 2rem;
+        transform: translateY(100%);
+        transition: transform 0.4s ease-in-out;
+      }
+      .movieInfo {
+        @include Flex();
+        justify-content: space-between;
+        height: 5rem;
+        padding: 1rem;
+        h3 {
+          font-size: 1.5rem;
+
+          font-weight: 600;
+        }
+        span {
+          @include backgroundColor();
+          padding: 0.5rem;
+          font-weight: 600;
+          font-size: 1.3rem;
+          border-radius: 0.7rem;
+        }
+        span.green {
+          color: green !important;
+        }
+        span.red {
+          color: yellow !important;
+        }
+        span.orange {
+          color: orange !important;
+        }
+      }
+    }
+    .movieBox:hover .overview {
+      transform: translateY(0);
+    }
+  }
+
+  // paginatiuon Seciton
+  .pagination_section {
+    @include Flex();
+    background: #708ed2;
+    height: 4rem;
+  }
+
+  /* pagination styling */
+  .pagination_section button {
+    color: black;
+    padding: 10px 18px;
+    text-decoration: none;
+  }
+
+  /* pagination hover effect on non-active */
+  .pagination_section button:hover:not(.active) {
+    background-color: #031f3b;
+    color: white;
+  }
+
+  /* pagination hover effect on active*/
+
+  button:nth-child(1) {
+    font-weight: bold;
+  }
+
+  button:nth-child(7) {
+    font-weight: bold;
+  }
+
+  .pageNotFound {
+    @include Flex();
+    height: 100vh;
+    text-align: center;
+    width: 100%;
+    h4 {
+      color: #ebe5e2;
+      font-size: 3rem;
+    }
+  }
+}
